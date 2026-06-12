@@ -19,4 +19,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CollegeNBU.Core\CollegeNBU.Core.csproj" />
+    <ProjectReference Include="..\CollegeNBU.Data\CollegeNBU.Data.csproj" />
+  </ItemGroup>
+
 </Project>

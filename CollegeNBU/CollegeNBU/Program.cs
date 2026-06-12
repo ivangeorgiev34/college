@@ -1,5 +1,5 @@
-using CollegeNBU.Data;
-using Microsoft.AspNetCore.Identity;
+using CollegeNBU.Core.Models;
+using CollegeNBU.Data.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace CollegeNBU
@@ -12,12 +12,12 @@ namespace CollegeNBU
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            builder.Services.AddDbContext<CollegeDbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddDefaultIdentity<ApplicationUser>()
+                .AddEntityFrameworkStores<CollegeDbContext>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
