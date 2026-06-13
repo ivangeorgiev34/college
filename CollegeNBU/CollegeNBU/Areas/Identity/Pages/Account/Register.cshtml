@@ -1,0 +1,116 @@
+@page
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register User";
+}
+
+<div class="container py-5">
+
+    <div class="card login-card shadow-lg border-0">
+
+        <div class="card-body">
+
+            <h2 class="text-center fw-bold mb-2">
+                Register New User
+            </h2>
+
+            <p class="login-subtitle">
+                Create a new account in the College Management System.
+            </p>
+
+            <form id="registerForm"
+                  asp-route-returnUrl="@Model.ReturnUrl"
+                  method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3"
+                     role="alert">
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Input.Email"
+                           class="form-label">
+                        Email
+                    </label>
+
+                    <input asp-for="Input.Email"
+                           class="form-control"
+                           autocomplete="username"
+                           placeholder="name@example.com" />
+
+                    <span asp-validation-for="Input.Email"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Input.Password"
+                           class="form-label">
+                        Password
+                    </label>
+
+                    <input asp-for="Input.Password"
+                           class="form-control"
+                           autocomplete="new-password" />
+
+                    <span asp-validation-for="Input.Password"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label asp-for="Input.ConfirmPassword"
+                           class="form-label">
+                        Confirm Password
+                    </label>
+
+                    <input asp-for="Input.ConfirmPassword"
+                           class="form-control"
+                           autocomplete="new-password" />
+
+                    <span asp-validation-for="Input.ConfirmPassword"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Role
+                    </label>
+
+                    <select class="form-select">
+
+                        <option>Student</option>
+                        <option>Teacher</option>
+                        <option>Department Head</option>
+                        <option>Rector</option>
+
+                    </select>
+
+                </div>
+
+                <button id="registerSubmit"
+                        type="submit"
+                        class="btn btn-primary w-100 login-btn">
+                    Create User
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
