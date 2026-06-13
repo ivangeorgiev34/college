@@ -22,4 +22,6 @@ public class Teacher
 
     public ICollection<Course> Courses { get; set; }
         = new List<Course>();
+
+    public ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
 }

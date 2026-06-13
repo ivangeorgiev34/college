@@ -12,6 +12,9 @@ public class Grade
 
     public Course Course { get; set; } = null!;
 
+    public int TeacherId { get; set; }
+    public Teacher Teacher { get; set; } = null!;
+
     public decimal Value { get; set; }
 
     public DateTime DateGiven { get; set; }

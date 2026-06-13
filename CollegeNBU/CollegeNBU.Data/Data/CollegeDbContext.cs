@@ -11,29 +11,18 @@ public class CollegeDbContext : IdentityDbContext<ApplicationUser>
     {
     }
 
-    public DbSet<College> Colleges { get; set; } = null!;
-
-    public DbSet<Faculty> Faculties { get; set; } = null!;
-
-    public DbSet<Department> Departments { get; set; } = null!;
-
-    public DbSet<Teacher> Teachers { get; set; } = null!;
-
-    public DbSet<Student> Students { get; set; } = null!;
-
-    public DbSet<Rector> Rectors { get; set; } = null!;
-
-    public DbSet<Course> Courses { get; set; } = null!;
-
-    public DbSet<Grade> Grades { get; set; } = null!;
-
-    public DbSet<Attendance> Attendances { get; set; } = null!;
-
-    public DbSet<StudentCourse> StudentCourses { get; set; } = null!;
-
-    public DbSet<SemesterProgram> SemesterPrograms { get; set; } = null!;
-
-    public DbSet<SemesterProgramCourse> SemesterProgramCourses { get; set; } = null!;
+    public DbSet<College> Colleges => Set<College>();
+    public DbSet<Faculty> Faculties => Set<Faculty>();
+    public DbSet<Department> Departments => Set<Department>();
+    public DbSet<Teacher> Teachers => Set<Teacher>();
+    public DbSet<Student> Students => Set<Student>();
+    public DbSet<Rector> Rectors => Set<Rector>();
+    public DbSet<Course> Courses => Set<Course>();
+    public DbSet<Grade> Grades => Set<Grade>();
+    public DbSet<Attendance> Attendances => Set<Attendance>();
+    public DbSet<StudentCourse> StudentCourses => Set<StudentCourse>();
+    public DbSet<SemesterProgram> SemesterPrograms => Set<SemesterProgram>();
+    public DbSet<SemesterProgramCourse> SemesterProgramCourses => Set<SemesterProgramCourse>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -43,33 +32,57 @@ public class CollegeDbContext : IdentityDbContext<ApplicationUser>
         ConfigureSemesterProgramCourse(builder);
         ConfigureDepartmentHead(builder);
 
-            builder.Entity<Course>()
-        .HasOne(c => c.Teacher)
-        .WithMany(t => t.Courses)
-        .HasForeignKey(c => c.TeacherId)
-        .OnDelete(DeleteBehavior.Restrict);
+        // Course relations
+        builder.Entity<Course>()
+            .HasOne(c => c.Teacher)
+            .WithMany(t => t.Courses)
+            .HasForeignKey(c => c.TeacherId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<Course>()
-        .HasOne(c => c.Department)
-        .WithMany(d => d.Courses)
-        .HasForeignKey(c => c.DepartmentId)
-        .OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<Course>()
+            .HasOne(c => c.Department)
+            .WithMany(d => d.Courses)
+            .HasForeignKey(c => c.DepartmentId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<Teacher>()
-        .HasOne(t => t.Department)
-        .WithMany(d => d.Teachers)
-        .HasForeignKey(t => t.DepartmentId)
-        .OnDelete(DeleteBehavior.Restrict);
+        // Teacher -> Department
+        builder.Entity<Teacher>()
+            .HasOne(t => t.Department)
+            .WithMany(d => d.Teachers)
+            .HasForeignKey(t => t.DepartmentId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Attendance relations
+        builder.Entity<Attendance>()
+            .HasOne(a => a.Teacher)
+            .WithMany(t => t.Attendances)
+            .HasForeignKey(a => a.TeacherId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Entity<Attendance>()
+            .HasOne(a => a.Student)
+            .WithMany(s => s.Attendances)
+            .HasForeignKey(a => a.StudentId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Entity<Attendance>()
+            .HasOne(a => a.Course)
+            .WithMany(c => c.Attendances)
+            .HasForeignKey(a => a.CourseId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Grade relations
+        builder.Entity<Grade>()
+            .HasOne(g => g.Teacher)
+            .WithMany()
+            .HasForeignKey(g => g.TeacherId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 
     private static void ConfigureStudentCourse(ModelBuilder builder)
     {
         builder.Entity<StudentCourse>()
-            .HasKey(sc => new
-            {
-                sc.StudentId,
-                sc.CourseId
-            });
+            .HasKey(sc => new { sc.StudentId, sc.CourseId });
 
         builder.Entity<StudentCourse>()
             .HasOne(sc => sc.Student)
@@ -87,22 +100,18 @@ public class CollegeDbContext : IdentityDbContext<ApplicationUser>
     private static void ConfigureSemesterProgramCourse(ModelBuilder builder)
     {
         builder.Entity<SemesterProgramCourse>()
-            .HasKey(spc => new
-            {
-                spc.SemesterProgramId,
-                spc.CourseId
-            });
+            .HasKey(x => new { x.SemesterProgramId, x.CourseId });
 
         builder.Entity<SemesterProgramCourse>()
-            .HasOne(spc => spc.SemesterProgram)
-            .WithMany(sp => sp.Courses)
-            .HasForeignKey(spc => spc.SemesterProgramId)
+            .HasOne(x => x.SemesterProgram)
+            .WithMany(p => p.Courses)
+            .HasForeignKey(x => x.SemesterProgramId)
             .OnDelete(DeleteBehavior.Restrict);
 
         builder.Entity<SemesterProgramCourse>()
-            .HasOne(spc => spc.Course)
+            .HasOne(x => x.Course)
             .WithMany(c => c.SemesterPrograms)
-            .HasForeignKey(spc => spc.CourseId)
+            .HasForeignKey(x => x.CourseId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 

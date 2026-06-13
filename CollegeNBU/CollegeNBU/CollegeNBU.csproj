@@ -20,4 +20,8 @@
     <ProjectReference Include="..\CollegeNBU.Data\CollegeNBU.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\UserManagement\" />
+  </ItemGroup>
+
 </Project>
