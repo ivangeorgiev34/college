@@ -7,6 +7,8 @@ public class SemesterProgram
     public string Name { get; set; } = null!;
 
     public string Semester { get; set; } = null!;
+    public int DepartmentId { get; set; }
+    public Department Department { get; set; } = null!;
 
     public ICollection<SemesterProgramCourse> Courses { get; set; }
         = new List<SemesterProgramCourse>();
