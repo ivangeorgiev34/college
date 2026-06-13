@@ -1,22 +1,88 @@
 html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    font-size: 14px;
 }
 
 body {
-  margin-bottom: 60px;
+    background: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background: #0f172a;
+}
+
+.hero-section {
+    background: linear-gradient( 135deg, #2563eb, #1e40af );
+    color: white;
+    padding: 160px 0;
+    margin-bottom: 60px;
+}
+
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.15);
+    color: white;
+    font-size: .9rem;
+    margin-bottom: 20px;
+}
+
+.dashboard-card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    transition: .3s;
+    overflow: hidden;
+}
+
+.dashboard-card .card-body {
+    padding: 40px 25px;
+}
+
+.dashboard-card h4 {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-8px);
+}
+
+.footer {
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 20px;
+}
+
+.navbar .nav-link {
+    color: rgba(255,255,255,.85) !important;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover {
+    color: white !important;
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+.btn {
+    border-radius: 18px;
 }
