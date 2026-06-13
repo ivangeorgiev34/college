@@ -86,3 +86,70 @@ body {
 .btn {
     border-radius: 18px;
 }
+
+/* LOGIN PAGE */
+
+.login-card {
+    max-width: 550px;
+    margin: 80px auto;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+    .login-card .card-body {
+        padding: 50px;
+    }
+
+    .login-card h3 {
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+.login-subtitle {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 35px;
+}
+
+.login-card .form-control {
+    height: 52px;
+    border-radius: 12px;
+}
+
+.login-card .form-label {
+    font-weight: 600;
+}
+
+.login-btn {
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
+}
+
+#forgot-password {
+    text-decoration: none;
+}
+
+#forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-card .form-select {
+    height: 52px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    padding-left: 12px;
+}
+
+.login-card .form-control,
+.login-card .form-select {
+    height: 44px;
+    border-radius: 10px;
+}
+
+.login-card .form-control:focus,
+.login-card .form-select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 0.15rem rgba(37,99,235,.15);
+}
