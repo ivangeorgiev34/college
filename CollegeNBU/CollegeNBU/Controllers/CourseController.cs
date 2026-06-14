@@ -25,6 +25,7 @@ public class CourseController : Controller
             {
                 Id = c.Id,
                 Name = c.Name,
+                Description = c.Description,
                 DepartmentName = c.Department.Name,
                 TeacherName = c.Teacher.FirstName + " " + c.Teacher.LastName
             })
@@ -57,6 +58,7 @@ public class CourseController : Controller
         var course = new Course
         {
             Name = model.Name,
+            Description = model.Description,
             DepartmentId = model.DepartmentId,
             TeacherId = model.TeacherId
         };
@@ -79,6 +81,7 @@ public class CourseController : Controller
         {
             Id = course.Id,
             Name = course.Name,
+            Description = course.Description,
             DepartmentId = course.DepartmentId,
             TeacherId = course.TeacherId
         };
@@ -100,6 +103,7 @@ public class CourseController : Controller
             return NotFound();
 
         course.Name = model.Name;
+        course.Description = model.Description;
         course.DepartmentId = model.DepartmentId;
         course.TeacherId = model.TeacherId;
 

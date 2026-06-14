@@ -1,0 +1,115 @@
+﻿@model CollegeNBU.Web.ViewModels.Teacher.EditTeacherViewModel
+
+@{
+    ViewData["Title"] = "Edit Teacher";
+}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card login-card shadow-lg border-0">
+
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-4">
+
+                        <h2 class="fw-bold text-center">
+                            Edit Teacher
+                        </h2>
+
+                        <p class="text-muted">
+                            Update teacher information.
+                        </p>
+
+                    </div>
+
+                    <form asp-action="Edit">
+
+                        <input asp-for="Id" hidden />
+
+                        <div class="mb-3">
+
+                            <label asp-for="FirstName"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="FirstName"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="LastName"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="LastName"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Email"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="Email"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="QualificationSubjects"
+                                   class="form-label">
+                                Qualification Subjects
+                            </label>
+
+                            <textarea asp-for="QualificationSubjects"
+                                      class="form-control"
+                                      rows="3">
+                            </textarea>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Department
+                            </label>
+
+                            <select asp-for="DepartmentId"
+                                    class="form-select">
+
+                                @foreach (var department in ViewBag.Departments)
+                                {
+                                    <option value="@department.Id">
+                                        @department.Name
+                                    </option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary w-100 login-btn">
+                            Save Changes
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

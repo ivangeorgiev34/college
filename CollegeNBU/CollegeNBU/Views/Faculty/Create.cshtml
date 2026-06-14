@@ -1,0 +1,77 @@
+﻿@model CollegeNBU.Web.ViewModels.Faculty.CreateFacultyViewModel
+
+@{
+    ViewData["Title"] = "Create Faculty";
+}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-6">
+
+            <div class="card login-card shadow-lg border-0">
+
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-4 text-center">
+
+                        <h2 class="fw-bold">
+                            Add Faculty
+                        </h2>
+
+                        <p class="text-muted">
+                            Create a new faculty.
+                        </p>
+
+                    </div>
+
+                    <form asp-action="Create">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Faculty Name
+                            </label>
+
+                            <input asp-for="Name"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                College
+                            </label>
+
+                            <select asp-for="CollegeId"
+                                    class="form-select">
+
+                                @foreach (var college in ViewBag.Colleges)
+                                {
+                                    <option value="@college.Id">
+                                        @college.Name
+                                    </option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary w-100 login-btn">
+                            Save Faculty
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

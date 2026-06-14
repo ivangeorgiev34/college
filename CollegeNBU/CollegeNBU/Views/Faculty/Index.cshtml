@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CollegeNBU.Web.ViewModels.Faculty.FacultyViewModel>
+
+@{
+    ViewData["Title"] = "Faculties";
+}
+
+<div class="container py-4">
+
+    <div class="text-center mb-4">
+
+        <h2 class="fw-bold">
+            Faculties
+        </h2>
+
+        <p class="text-muted">
+            Manage faculty information.
+        </p>
+
+        <a asp-action="Create"
+           class="btn btn-primary">
+            Add Faculty
+        </a>
+
+    </div>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>College</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var faculty in Model)
+                    {
+                        <tr>
+
+                            <td>@faculty.Name</td>
+
+                            <td>@faculty.CollegeName</td>
+
+                            <td class="text-end">
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@faculty.Id"
+                                   class="btn btn-sm btn-outline-primary">
+                                    Edit
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@faculty.Id"
+                                   class="btn btn-sm btn-outline-danger">
+                                    Delete
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

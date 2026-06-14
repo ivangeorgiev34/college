@@ -1,0 +1,92 @@
+﻿@model CollegeNBU.Web.ViewModels.SemesterProgram.CreateSemesterProgramViewModel
+
+@{
+    ViewData["Title"] = "Create Semester Program";
+}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card login-card shadow-lg border-0">
+
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-4">
+
+                        <h2 class="fw-bold text-center">
+                            Create Semester Program
+                        </h2>
+
+                        <p class="text-muted">
+                            Assign courses to a department semester program.
+                        </p>
+
+                    </div>
+
+                    <form asp-action="Create">
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Department
+                            </label>
+
+                            <select asp-for="DepartmentId"
+                                    class="form-select">
+
+                                @foreach (var department in ViewBag.Departments)
+                                {
+                                    <option value="@department.Id">
+                                        @department.Name
+                                    </option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                Courses
+                            </label>
+
+                            <select asp-for="CourseIds"
+                                    class="form-select"
+                                    multiple
+                                    size="8">
+
+                                @foreach (var course in ViewBag.Courses)
+                                {
+                                    <option value="@course.Id">
+                                        @course.Name
+                                    </option>
+                                }
+
+                            </select>
+
+                            <small class="text-muted">
+                                Hold Ctrl to select multiple courses.
+                            </small>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary login-btn w-100">
+                            Save Semester Program
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,78 @@
+﻿@model CollegeNBU.Web.ViewModels.Department.CreateDepartmentViewModel
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    ViewData["Title"] = "Create Department";
+}
+
+<div class="container py-5">
+
+    <div class="card login-card shadow-lg border-0">
+
+        <div class="card-body">
+
+            <h2 class="fw-bold mb-2 text-center">
+                Create Department
+            </h2>
+
+            <p class="login-subtitle">
+                Add a new department.
+            </p>
+
+            <form asp-action="Create">
+
+                <div class="mb-3">
+
+                    <label asp-for="Name"
+                           class="form-label">
+                        Department Name
+                    </label>
+
+                    <input asp-for="Name"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Faculty
+                    </label>
+
+                    <select asp-for="FacultyId"
+                            class="form-select"
+                            asp-items="@(new SelectList(ViewBag.Faculties, "Id", "Name"))">
+                    </select>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Head Teacher
+                    </label>
+
+                    <select asp-for="HeadTeacherId"
+                            class="form-select"
+                            asp-items="@(new SelectList(ViewBag.Teachers, "Id", "FirstName"))">
+
+                        <option value="">
+                            -- No Head Teacher --
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary login-btn w-100">
+                    Create Department
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

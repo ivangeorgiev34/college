@@ -1,0 +1,72 @@
+﻿@model CollegeNBU.Web.ViewModels.Attendance.CreateAttendanceViewModel
+
+@{
+    ViewData["Title"] = "Create Attendance";
+}
+
+<div class="container py-5">
+
+    <div class="card login-card shadow-lg border-0">
+
+        <div class="card-body">
+
+            <h2 class="fw-bold mb-2 text-center">
+                Add Attendance
+            </h2>
+
+            <p class="login-subtitle">
+                Create a new attendance record.
+            </p>
+
+            <form asp-action="Create">
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Student
+                    </label>
+
+                    <select asp-for="StudentId"
+                            class="form-select"
+                            asp-items="@(new SelectList(ViewBag.Students, "Id", "FirstName"))">
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Course
+                    </label>
+
+                    <select asp-for="CourseId"
+                            class="form-select"
+                            asp-items="@(new SelectList(ViewBag.Courses, "Id", "Name"))">
+                    </select>
+
+                </div>
+
+                <div class="form-check mb-4">
+
+                    <input asp-for="IsAbsent"
+                           class="form-check-input" />
+
+                    <label asp-for="IsAbsent"
+                           class="form-check-label">
+                        Student Absent
+                    </label>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary login-btn w-100">
+                    Save Attendance
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

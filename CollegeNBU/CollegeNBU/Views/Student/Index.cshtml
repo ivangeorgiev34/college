@@ -1,0 +1,86 @@
+﻿@model IEnumerable<CollegeNBU.Web.ViewModels.Student.StudentViewModel>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<div class="container py-4">
+
+    <div class="text-center mb-4">
+
+        <h2 class="fw-bold text-center">
+            Students
+        </h2>
+
+        <p class="text-muted">
+            Manage student records and enrollments.
+        </p>
+
+        <a asp-area="Identity"
+            asp-page="/Account/Register"
+            class="btn btn-primary">
+            Register Student
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var student in Model)
+                    {
+                        <tr>
+
+                            <td>@student.FullName</td>
+
+                            <td>@student.Email</td>
+
+                            <td>@student.DepartmentName</td>
+
+                            <td class="text-end">
+
+                                <a asp-action="Enroll"
+                                   asp-route-id="@student.Id"
+                                   class="btn btn-sm btn-outline-success">
+                                    Enroll
+                                </a>
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@student.Id"
+                                   class="btn btn-sm btn-outline-primary">
+                                    Edit
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@student.Id"
+                                   class="btn btn-sm btn-outline-danger">
+                                    Delete
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

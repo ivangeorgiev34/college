@@ -9,4 +9,6 @@ public class CourseViewModel
     public string DepartmentName { get; set; } = null!;
 
     public string TeacherName { get; set; } = null!;
+
+    public string Description { get; set; } = null!;
 }
