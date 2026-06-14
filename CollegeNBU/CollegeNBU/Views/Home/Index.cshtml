@@ -1,56 +1,87 @@
 ﻿@{
     ViewData["Title"] = "Home";
 }
+
 <section class="hero-section">
     <div class="container text-center">
         <h1 class="hero-title">
             Manage Your College Efficiently
         </h1>
-        <p class="hero-subtitle mx-auto">
-            Centralized management of faculties, departments, courses,
-            teachers and students in one modern platform.
+        <p class="hero-subtitle">
+            Centralized management of faculties, departments,
+            courses, teachers and students in one platform.
         </p>
         <div class="mt-5">
-            <a class="btn btn-light btn-lg px-5 me-3 fw-semibold">
+            <a asp-controller="College"
+               asp-action="Index"
+               class="btn btn-light btn-lg px-5 me-3">
                 Explore Colleges
             </a>
-            <a class="btn btn-outline-light btn-lg px-5">
-                Learn More
+            <a asp-controller="Statistics"
+               asp-action="College"
+               class="btn btn-outline-light btn-lg px-5">
+                View Statistics
             </a>
         </div>
     </div>
 </section>
 <div class="container">
     <div class="row g-4 mb-5">
-        <div class="col-md-4">
-            <div class="card dashboard-card h-100">
-                <div class="card-body text-center">
-                    <h4>Colleges</h4>
-                    <p>
-                        Manage college information, locations and structure.
-                    </p>
+        <div class="col-md-3">
+            <a asp-controller="College"
+               asp-action="Index"
+               class="text-decoration-none">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body text-center">
+                        <h4>Colleges</h4>
+                        <p>
+                            Manage colleges and locations.
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <div class="col-md-4">
-            <div class="card dashboard-card h-100">
-                <div class="card-body text-center">
-                    <h4>Faculties</h4>
-                    <p>
-                        Organize faculties and departments efficiently.
-                    </p>
+        <div class="col-md-3">
+            <a asp-controller="Faculty"
+               asp-action="Index"
+               class="text-decoration-none">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body text-center">
+                        <h4>Faculties</h4>
+                        <p>
+                            Organize academic structures.
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <div class="col-md-4">
-            <div class="card dashboard-card h-100">
-                <div class="card-body text-center">
-                    <h4>Courses</h4>
-                    <p>
-                        Manage courses and academic programs.
-                    </p>
+        <div class="col-md-3">
+            <a asp-controller="Student"
+               asp-action="Index"
+               class="text-decoration-none">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body text-center">
+                        <h4>Students</h4>
+                        <p>
+                            Manage students and enrollments.
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-controller="Teacher"
+               asp-action="Index"
+               class="text-decoration-none">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body text-center">
+                        <h4>Teachers</h4>
+                        <p>
+                            Manage teachers and courses.
+                        </p>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
 </div>

@@ -9,112 +9,129 @@ body {
     flex-direction: column;
 }
 
+main {
+    flex: 1;
+}
+
+/* NAVBAR */
+
 .navbar {
     background: #0f172a;
+    padding: 12px 0;
 }
+
+.navbar-brand {
+    color: white !important;
+    font-size: 1.4rem;
+}
+
+.navbar .nav-link {
+    color: rgba(255,255,255,.85) !important;
+    font-weight: 500;
+    transition: .3s;
+}
+
+    .navbar .nav-link:hover {
+        color: white !important;
+    }
+
+/* HERO */
 
 .hero-section {
     background: linear-gradient( 135deg, #2563eb, #1e40af );
     color: white;
-    padding: 160px 0;
+    padding: 140px 0;
     margin-bottom: 60px;
 }
 
 .hero-title {
-    font-size: 3.8rem;
+    font-size: 4rem;
     font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .hero-subtitle {
     max-width: 700px;
     margin: auto;
     font-size: 1.2rem;
-    opacity: 0.9;
+    opacity: .95;
 }
 
-.hero-badge {
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.15);
-    color: white;
-    font-size: .9rem;
-    margin-bottom: 20px;
+/* BUTTONS */
+
+.btn {
+    border-radius: 16px;
 }
+
+.btn-light {
+    font-weight: 600;
+}
+
+/* DASHBOARD */
 
 .dashboard-card {
     border: none;
-    border-radius: 18px;
-    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
     transition: .3s;
     overflow: hidden;
-}
-
-.dashboard-card .card-body {
-    padding: 40px 25px;
-}
-
-.dashboard-card h4 {
-    font-weight: 700;
-    margin-bottom: 15px;
-    font-size: 1.4rem;
+    cursor: pointer;
 }
 
 .dashboard-card:hover {
     transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.12);
 }
 
-.footer {
-    background: white;
-    border-top: 1px solid #e5e7eb;
-    padding: 20px;
+.dashboard-card .card-body {
+    padding: 35px 25px;
 }
 
-.navbar .nav-link {
-    color: rgba(255,255,255,.85) !important;
-    font-weight: 500;
+.dashboard-card h4 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
-.navbar .nav-link:hover {
-    color: white !important;
+.dashboard-card p {
+    color: #64748b;
+    margin-bottom: 0;
 }
 
-.navbar-brand {
-    color: white !important;
-}
-
-.btn {
-    border-radius: 18px;
-}
-
-/* LOGIN PAGE */
+/* FORMS */
 
 .login-card {
-    max-width: 550px;
-    margin: 80px auto;
+    max-width: 650px;
+    margin: 60px auto;
     border-radius: 24px;
     overflow: hidden;
 }
 
     .login-card .card-body {
-        padding: 50px;
-    }
-
-    .login-card h3 {
-        text-align: center;
-        font-weight: 700;
-        margin-bottom: 10px;
+        padding: 45px;
     }
 
 .login-subtitle {
     text-align: center;
-    color: #6c757d;
-    margin-bottom: 35px;
+    color: #6b7280;
+    margin-bottom: 30px;
 }
 
-.login-card .form-control {
-    height: 52px;
+.login-card .form-control,
+.login-card .form-select {
+    height: 46px;
     border-radius: 12px;
+    border: 1px solid #d1d5db;
+}
+
+.login-card textarea.form-control {
+    height: auto;
+}
+
+.login-card .form-control:focus,
+.login-card .form-select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 .15rem rgba(37,99,235,.15);
 }
 
 .login-card .form-label {
@@ -127,29 +144,37 @@ body {
     font-weight: 600;
 }
 
+.form-select[multiple] {
+    min-height: 220px;
+    border-radius: 12px;
+}
+
+/* TABLES */
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    font-weight: 600;
+    color: #475569;
+}
+
+/* FOOTER */
+
+.footer {
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 20px;
+    margin-top: auto;
+}
+
+/* LINKS */
+
 #forgot-password {
     text-decoration: none;
 }
 
 #forgot-password:hover {
     text-decoration: underline;
-}
-
-.login-card .form-select {
-    height: 52px;
-    border-radius: 12px;
-    border: 1px solid #d1d5db;
-    padding-left: 12px;
-}
-
-.login-card .form-control,
-.login-card .form-select {
-    height: 44px;
-    border-radius: 10px;
-}
-
-.login-card .form-control:focus,
-.login-card .form-select:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 0.15rem rgba(37,99,235,.15);
 }

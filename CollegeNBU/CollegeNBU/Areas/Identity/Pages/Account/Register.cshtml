@@ -6,111 +6,163 @@
 }
 
 <div class="container py-5">
-
     <div class="card login-card shadow-lg border-0">
-
         <div class="card-body">
-
             <h2 class="text-center fw-bold mb-2">
                 Register New User
             </h2>
-
             <p class="login-subtitle">
                 Create a new account in the College Management System.
             </p>
-
             <form id="registerForm"
                   asp-route-returnUrl="@Model.ReturnUrl"
                   method="post">
-
                 <div asp-validation-summary="ModelOnly"
                      class="text-danger mb-3"
                      role="alert">
                 </div>
-
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">
+                            First Name
+                        </label>
+                        <input class="form-control"
+                               placeholder="First Name" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">
+                            Last Name
+                        </label>
+                        <input class="form-control"
+                               placeholder="Last Name" />
+                    </div>
+                </div>
                 <div class="mb-3">
+                    <label class="form-label">
+                        Role
+                    </label>
+                    <select id="roleSelect"
+                            class="form-select">
+                        <option value="Student">
+                            Student
+                        </option>
+                        <option value="Teacher">
+                            Teacher
+                        </option>
+                        <option value="DepartmentHead">
+                            Department Head
+                        </option>
+                        <option value="Rector">
+                            Rector
+                        </option>
+                    </select>
+                </div>
+                <div id="departmentContainer"
+                     class="mb-3">
+                    <label class="form-label">
+                        Department
+                    </label>
+                    @* <select class="form-select">
 
+                        @foreach (var department in Model.Departments)
+                        {
+                            <option value="@department.Id">
+                                @department.Name
+                            </option>
+                        }
+
+                    </select> *@
+                </div>
+                <div id="qualificationContainer"
+                     class="mb-3 d-none">
+                    <label class="form-label">
+                        Qualification Subjects
+                    </label>
+                    <textarea class="form-control"
+                              rows="3"
+                              placeholder="Enter qualification subjects">
+                    </textarea>
+                </div>
+                <div class="mb-3">
                     <label asp-for="Input.Email"
                            class="form-label">
                         Email
                     </label>
-
                     <input asp-for="Input.Email"
                            class="form-control"
                            autocomplete="username"
                            placeholder="name@example.com" />
-
                     <span asp-validation-for="Input.Email"
                           class="text-danger">
                     </span>
-
                 </div>
-
                 <div class="mb-3">
-
                     <label asp-for="Input.Password"
                            class="form-label">
                         Password
                     </label>
-
                     <input asp-for="Input.Password"
                            class="form-control"
                            autocomplete="new-password" />
-
                     <span asp-validation-for="Input.Password"
                           class="text-danger">
                     </span>
-
                 </div>
-
                 <div class="mb-4">
-
                     <label asp-for="Input.ConfirmPassword"
                            class="form-label">
                         Confirm Password
                     </label>
-
                     <input asp-for="Input.ConfirmPassword"
                            class="form-control"
                            autocomplete="new-password" />
-
                     <span asp-validation-for="Input.ConfirmPassword"
                           class="text-danger">
                     </span>
-
                 </div>
-
-                <div class="mb-4">
-
-                    <label class="form-label">
-                        Role
-                    </label>
-
-                    <select class="form-select">
-
-                        <option>Student</option>
-                        <option>Teacher</option>
-                        <option>Department Head</option>
-                        <option>Rector</option>
-
-                    </select>
-
-                </div>
-
                 <button id="registerSubmit"
                         type="submit"
                         class="btn btn-primary w-100 login-btn">
                     Create User
                 </button>
-
             </form>
-
         </div>
-
     </div>
-
 </div>
-
 @section Scripts {
+
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        const roleSelect =
+            document.getElementById("roleSelect");
+
+        const departmentContainer =
+            document.getElementById("departmentContainer");
+
+        const qualificationContainer =
+            document.getElementById("qualificationContainer");
+
+        roleSelect.addEventListener("change", function () {
+
+            const role = this.value;
+
+            departmentContainer.classList.remove("d-none");
+            qualificationContainer.classList.add("d-none");
+
+            if (role === "Teacher") {
+
+                qualificationContainer.classList.remove("d-none");
+            }
+
+            if (role === "Rector") {
+
+                departmentContainer.classList.add("d-none");
+            }
+
+        });
+
+    </script>
+
 }
