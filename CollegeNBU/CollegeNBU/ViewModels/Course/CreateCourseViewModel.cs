@@ -7,4 +7,7 @@ public class CreateCourseViewModel
     public int DepartmentId { get; set; }
 
     public int TeacherId { get; set; }
+
+    public string Description { get; set; } = null!;
+
 }
