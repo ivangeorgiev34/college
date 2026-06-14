@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CollegeNBU.Web.ViewModels.Statistics.TeacherStatisticsViewModel>
+
+@{
+    ViewData["Title"] = "Teacher Statistics";
+}
+
+<div class="container py-4">
+
+    <div class="text-center mb-4">
+
+        <h2 class="fw-bold text-center">
+            Teacher Statistics
+        </h2>
+
+        <p class="text-muted">
+            Performance overview by teacher.
+        </p>
+
+    </div>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+                        <th>Teacher</th>
+                        <th>Courses</th>
+                        <th>Average Grade</th>
+                        <th>Absences</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.TeacherName</td>
+
+                            <td>@item.CoursesCount</td>
+
+                            <td>
+                                @item.AverageGrade.ToString("F2")
+                            </td>
+
+                            <td>
+                                @item.TotalAbsences
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

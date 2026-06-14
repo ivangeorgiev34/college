@@ -1,0 +1,158 @@
+﻿@model CollegeNBU.Web.ViewModels.Rector.RectorDashboardViewModel
+
+@{
+    ViewData["Title"] = "Rector Dashboard";
+}
+
+<div class="container py-4">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold text-center">
+            Rector Dashboard
+        </h2>
+
+        <p class="text-muted">
+            Overview of the college statistics.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center h-100">
+
+                <div class="card-body">
+
+                    <h3 class="fw-bold text-primary">
+                        @Model.TotalStudents
+                    </h3>
+
+                    <p class="mb-0">
+                        Students
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center h-100">
+
+                <div class="card-body">
+
+                    <h3 class="fw-bold text-success">
+                        @Model.TotalTeachers
+                    </h3>
+
+                    <p class="mb-0">
+                        Teachers
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center h-100">
+
+                <div class="card-body">
+
+                    <h3 class="fw-bold text-warning">
+                        @Model.TotalCourses
+                    </h3>
+
+                    <p class="mb-0">
+                        Courses
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center h-100">
+
+                <div class="card-body">
+
+                    <h3 class="fw-bold text-danger">
+                        @Model.TotalDepartments
+                    </h3>
+
+                    <p class="mb-0">
+                        Departments
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row g-4 mt-2">
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h4 class="fw-bold">
+                        Average Grade
+                    </h4>
+
+                    <h2 class="text-primary">
+                        @Model.AverageGrade.ToString("F2")
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h4 class="fw-bold">
+                        Total Absences
+                    </h4>
+
+                    <h2 class="text-danger">
+                        @Model.TotalAbsences
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="text-center mt-5">
+
+        <a asp-action="CourseStats"
+           class="btn btn-primary">
+            View Course Statistics
+        </a>
+
+    </div>
+
+</div>

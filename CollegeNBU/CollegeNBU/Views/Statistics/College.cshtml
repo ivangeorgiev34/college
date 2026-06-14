@@ -1,0 +1,119 @@
+﻿@model CollegeNBU.Web.ViewModels.Statistics.CollegeStatisticsViewModel
+
+@{
+    ViewData["Title"] = "College Statistics";
+}
+
+<div class="container py-4">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold text-center">
+            College Statistics
+        </h2>
+
+        <p class="text-muted">
+            Overview of the entire college.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center h-100">
+
+                <div class="card-body">
+
+                    <h2 class="fw-bold text-primary">
+                        @Model.TotalStudents
+                    </h2>
+
+                    <p>Students</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center h-100">
+
+                <div class="card-body">
+
+                    <h2 class="fw-bold text-success">
+                        @Model.TotalTeachers
+                    </h2>
+
+                    <p>Teachers</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center h-100">
+
+                <div class="card-body">
+
+                    <h2 class="fw-bold text-warning">
+                        @Model.TotalCourses
+                    </h2>
+
+                    <p>Courses</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card dashboard-card text-center h-100">
+
+                <div class="card-body">
+
+                    <h2 class="fw-bold text-danger">
+                        @Model.TotalAbsences
+                    </h2>
+
+                    <p>Absences</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row mt-4">
+
+        <div class="col-md-6 offset-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <h4>Overall Average Grade</h4>
+
+                    <h1 class="text-primary">
+                        @Model.OverallAverageGrade.ToString("F2")
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

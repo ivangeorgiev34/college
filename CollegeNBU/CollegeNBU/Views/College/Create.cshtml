@@ -1,0 +1,66 @@
+﻿@model CollegeNBU.ViewModels.College.CollegeViewModel
+
+@{
+    ViewData["Title"] = "Create College";
+}
+
+<div class="container py-5">
+
+    <div class="card login-card shadow-lg border-0">
+
+        <div class="card-body">
+
+            <h2 class="fw-bold mb-2 text-center">
+                Create College
+            </h2>
+
+            <p class="login-subtitle">
+                Add a new college to the system.
+            </p>
+
+            <form asp-action="Create">
+
+                <div class="mb-3">
+
+                    <label asp-for="Name"
+                           class="form-label">
+                        College Name
+                    </label>
+
+                    <input asp-for="Name"
+                           class="form-control" />
+
+                    <span asp-validation-for="Name"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label asp-for="Address"
+                           class="form-label">
+                        Address
+                    </label>
+
+                    <input asp-for="Address"
+                           class="form-control" />
+
+                    <span asp-validation-for="Address"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary login-btn w-100">
+                    Create College
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

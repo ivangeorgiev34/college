@@ -1,0 +1,86 @@
+﻿@model IEnumerable<CollegeNBU.Web.ViewModels.Teacher.TeacherViewModel>
+
+@{
+    ViewData["Title"] = "Teachers";
+}
+
+<div class="container py-4">
+
+    <div class="text-center mb-4">
+
+        <h2 class="fw-bold text-center">
+            Teachers
+        </h2>
+
+        <p class="text-muted">
+            Manage teacher information and qualifications.
+        </p>
+
+        <a asp-area="Identity"
+            asp-page="/Account/Register"
+            class="btn btn-primary">
+            Register Teacher
+        </a>
+
+    </div>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Qualifications</th>
+                        <th></th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var teacher in Model)
+                    {
+                        <tr>
+
+                            <td>@teacher.FullName</td>
+
+                            <td>@teacher.Email</td>
+
+                            <td>@teacher.DepartmentName</td>
+
+                            <td>@teacher.QualificationSubjects</td>
+
+                            <td class="text-end">
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@teacher.Id"
+                                   class="btn btn-sm btn-outline-primary">
+                                    Edit
+                                </a>
+
+                                <a asp-action="Delete"
+                                   asp-route-id="@teacher.Id"
+                                   class="btn btn-sm btn-outline-danger">
+                                    Delete
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
