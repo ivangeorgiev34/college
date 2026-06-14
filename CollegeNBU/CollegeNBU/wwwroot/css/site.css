@@ -23,6 +23,7 @@ main {
 .navbar-brand {
     color: white !important;
     font-size: 1.4rem;
+    font-weight: 700;
 }
 
 .navbar .nav-link {
@@ -38,22 +39,22 @@ main {
 /* HERO */
 
 .hero-section {
-    background: linear-gradient( 135deg, #2563eb, #1e40af );
+    background: linear-gradient(135deg, #2563eb, #1e40af);
     color: white;
-    padding: 140px 0;
-    margin-bottom: 60px;
+    padding: 75px 0;
+    margin-bottom: 35px;
 }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .hero-subtitle {
     max-width: 700px;
     margin: auto;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     opacity: .95;
 }
 
@@ -78,25 +79,26 @@ main {
     cursor: pointer;
 }
 
-.dashboard-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,.12);
-}
+    .dashboard-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,.12);
+    }
 
-.dashboard-card .card-body {
-    padding: 35px 25px;
-}
+    .dashboard-card .card-body {
+        padding: 30px 22px;
+    }
 
-.dashboard-card h4 {
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
+    .dashboard-card h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #0f172a;
+    }
 
-.dashboard-card p {
-    color: #64748b;
-    margin-bottom: 0;
-}
+    .dashboard-card p {
+        color: #64748b;
+        margin-bottom: 0;
+    }
 
 /* FORMS */
 
@@ -155,9 +157,13 @@ main {
     margin-bottom: 0;
 }
 
-.table thead th {
-    font-weight: 600;
-    color: #475569;
+    .table thead th {
+        font-weight: 600;
+        color: #475569;
+    }
+
+.card.shadow-sm {
+    border-radius: 18px;
 }
 
 /* FOOTER */
@@ -175,6 +181,27 @@ main {
     text-decoration: none;
 }
 
-#forgot-password:hover {
-    text-decoration: underline;
+    #forgot-password:hover {
+        text-decoration: underline;
+    }
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .dashboard-card .card-body {
+        padding: 25px 20px;
+    }
+
+    .login-card .card-body {
+        padding: 30px;
+    }
 }
