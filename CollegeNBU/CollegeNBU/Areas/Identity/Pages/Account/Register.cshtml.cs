@@ -63,6 +63,16 @@ public class RegisterModel : PageModel
     /// </summary>
     public class InputModel
     {
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; } = default!;
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; } = default!;
+
+
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
@@ -151,7 +161,11 @@ public class RegisterModel : PageModel
     {
         try
         {
-            return Activator.CreateInstance<ApplicationUser>();
+            return new ApplicationUser()
+            {
+                FirstName = Input.FirstName,
+                LastName = Input.LastName,
+            };
         }
         catch
         {
