@@ -1,6 +1,7 @@
 ﻿using CollegeNBU.Core.Models;
 using CollegeNBU.Data.Data;
 using CollegeNBU.Web.ViewModels.Attendance;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -17,6 +18,7 @@ public class AttendanceController : Controller
     }
 
     // LIST
+    [Authorize(Roles = "Admin, Teacher, Student")]
     public async Task<IActionResult> Index()
     {
         var attendances = await _context.Attendances
@@ -37,6 +39,7 @@ public class AttendanceController : Controller
     }
 
     // CREATE GET
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Create()
     {
         ViewBag.Students = await _context.Students.ToListAsync();
@@ -48,6 +51,7 @@ public class AttendanceController : Controller
     // CREATE POST
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Create(CreateAttendanceViewModel model)
     {
         if (!ModelState.IsValid)
@@ -87,6 +91,7 @@ public class AttendanceController : Controller
     }
 
     // EDIT GET
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Edit(int id)
     {
         var attendance = await _context.Attendances.FindAsync(id);
@@ -106,6 +111,7 @@ public class AttendanceController : Controller
     // EDIT POST
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Edit(EditAttendanceViewModel model)
     {
         var attendance = await _context.Attendances.FindAsync(model.Id);
@@ -121,6 +127,7 @@ public class AttendanceController : Controller
     }
 
     // DELETE
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Delete(int id)
     {
         var attendance = await _context.Attendances.FindAsync(id);

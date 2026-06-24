@@ -1,11 +1,13 @@
 ﻿using CollegeNBU.Core.Models;
 using CollegeNBU.Data.Data;
 using CollegeNBU.Web.ViewModels.Department;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CollegeNBU.Web.Controllers;
 
+[Authorize(Roles = "Admin")]
 public class DepartmentController : Controller
 {
     private readonly CollegeDbContext _context;
@@ -16,6 +18,7 @@ public class DepartmentController : Controller
     }
 
     // LIST
+    [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
         var departments = await _context.Departments

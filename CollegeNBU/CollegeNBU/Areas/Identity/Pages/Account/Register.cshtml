@@ -23,18 +23,28 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">
+                        <label class="form-label"
+                               asp-for="Input.FirstName">
                             First Name
                         </label>
                         <input class="form-control"
-                               placeholder="First Name" />
+                               placeholder="First Name"
+                               asp-for="Input.FirstName"/>
+                        <span asp-validation-for="Input.FirstName"
+                              class="text-danger">
+                        </span>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">
+                        <label class="form-label"
+                               asp-for="Input.LastName">
                             Last Name
                         </label>
                         <input class="form-control"
-                               placeholder="Last Name" />
+                               placeholder="Last Name" 
+                               asp-for="Input.LastName" />
+                        <span asp-validation-for="Input.LastName"
+                              class="text-danger">
+                        </span>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -42,7 +52,8 @@
                         Role
                     </label>
                     <select id="roleSelect"
-                            class="form-select">
+                            class="form-select"
+                            asp-for="Input.Role">
                         <option value="Student">
                             Student
                         </option>
@@ -62,26 +73,41 @@
                     <label class="form-label">
                         Department
                     </label>
-                    @* <select class="form-select">
-
-                        @foreach (var department in Model.Departments)
+                    <select class="form-select"
+                            asp-for="Input.SelectedDepartmentId">
+                        @foreach (var department in Model.Input.Departments)
                         {
                             <option value="@department.Id">
                                 @department.Name
                             </option>
                         }
 
-                    </select> *@
+                    </select>
                 </div>
                 <div id="qualificationContainer"
                      class="mb-3 d-none">
-                    <label class="form-label">
+                    <label class="form-label"
+                           asp-for="Input.QualificationSubjects">
                         Qualification Subjects
                     </label>
                     <textarea class="form-control"
                               rows="3"
-                              placeholder="Enter qualification subjects">
+                              placeholder="Enter qualification subjects"
+                              asp-for="Input.QualificationSubjects">
                     </textarea>
+                </div>
+                <div id="specialtyContainer"
+                    class="mb-3 d-none">
+                    <label asp-for="Input.Specialty"
+                           class="form-label">
+                        Specialty
+                    </label>
+                    <input asp-for="Input.Specialty"
+                           class="form-control"
+                           placeholder="Marketing" />
+                    <span asp-validation-for="Input.Specialty"
+                          class="text-danger">
+                    </span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Input.Email"
@@ -144,24 +170,42 @@
         const qualificationContainer =
             document.getElementById("qualificationContainer");
 
-        roleSelect.addEventListener("change", function () {
+        const specialtyContainer =
+            document.getElementById("specialtyContainer");
 
-            const role = this.value;
+        roleSelect.addEventListener("change", roleChange);
+
+        roleChange()
+
+        function roleChange() {
+
+            const role = roleSelect.value;
 
             departmentContainer.classList.remove("d-none");
             qualificationContainer.classList.add("d-none");
+            specialtyContainer.classList.add("d-none");
+
+            if (role === "Student") {
+
+                qualificationContainer.classList.add("d-none");
+
+                specialtyContainer.classList.remove("d-none");
+            }
 
             if (role === "Teacher") {
+
+                specialtyContainer.classList.add("d-none");
 
                 qualificationContainer.classList.remove("d-none");
             }
 
             if (role === "Rector") {
 
+                specialtyContainer.classList.add("d-none");
                 departmentContainer.classList.add("d-none");
             }
 
-        });
+        }
 
     </script>
 

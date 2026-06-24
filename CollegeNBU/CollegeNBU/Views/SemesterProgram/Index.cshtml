@@ -16,10 +16,13 @@
             Manage semester study programs by department.
         </p>
 
-        <a asp-action="Create"
-           class="btn btn-primary">
-            Create Program
-        </a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Create"
+               class="btn btn-primary">
+                Create Program
+            </a>
+        }
 
     </div>
 

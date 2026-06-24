@@ -1,6 +1,7 @@
 ﻿using CollegeNBU.Core.Models;
 using CollegeNBU.Data.Data;
 using CollegeNBU.Web.ViewModels.Grade;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -15,8 +16,7 @@ public class GradeController : Controller
     {
         _context = context;
     }
-
-    // LIST (Teacher/Admin)
+    [Authorize(Roles = "Admin, Teacher, Student")]
     public async Task<IActionResult> Index()
     {
         var grades = await _context.Grades
@@ -37,6 +37,7 @@ public class GradeController : Controller
     }
 
     // CREATE GET
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Create()
     {
         ViewBag.Students = await _context.Students.ToListAsync();
@@ -48,6 +49,7 @@ public class GradeController : Controller
     // CREATE POST
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Create(CreateGradeViewModel model)
     {
         if (!ModelState.IsValid)
@@ -86,6 +88,7 @@ public class GradeController : Controller
     }
 
     // EDIT GET
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Edit(int id)
     {
         var grade = await _context.Grades.FindAsync(id);
@@ -105,6 +108,7 @@ public class GradeController : Controller
     // EDIT POST
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Edit(EditGradeViewModel model)
     {
         var grade = await _context.Grades.FindAsync(model.Id);
@@ -120,6 +124,7 @@ public class GradeController : Controller
     }
 
     // DELETE
+    [Authorize(Roles = "Admin, Teacher")]
     public async Task<IActionResult> Delete(int id)
     {
         var grade = await _context.Grades.FindAsync(id);

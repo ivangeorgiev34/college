@@ -34,6 +34,9 @@ namespace CollegeNBU
             {
                 var services = scope.ServiceProvider;
 
+                var context = services.GetRequiredService<CollegeDbContext>();
+                context.Database.Migrate();
+
                 await SeedData.SeedRolesAsync(services);
                 await SeedData.SeedAdminAsync(services);
             }

@@ -16,10 +16,13 @@
             Manage all colleges in the system.
         </p>
 
-        <a asp-action="Create"
-           class="btn btn-primary">
-            Add College
-        </a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Create"
+               class="btn btn-primary">
+                Add College
+            </a>
+        }
 
     </div>
 
@@ -51,17 +54,20 @@
 
                             <td class="text-end">
 
-                                <a asp-action="Edit"
-                                   asp-route-id="@item.Id"
-                                   class="btn btn-sm btn-outline-primary">
-                                    Edit
-                                </a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Edit"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-primary">
+                                        Edit
+                                    </a>
 
-                                <a asp-action="Delete"
-                                   asp-route-id="@item.Id"
-                                   class="btn btn-sm btn-outline-danger">
-                                    Delete
-                                </a>
+                                    <a asp-action="Delete"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-danger">
+                                        Delete
+                                    </a>
+                                }
 
                             </td>
 

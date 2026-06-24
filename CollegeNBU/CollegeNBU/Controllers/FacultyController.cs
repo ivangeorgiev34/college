@@ -1,11 +1,13 @@
 ﻿using CollegeNBU.Core.Models;
 using CollegeNBU.Data.Data;
 using CollegeNBU.Web.ViewModels.Faculty;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CollegeNBU.Web.Controllers;
 
+[Authorize(Roles = "Admin")]
 public class FacultyController : Controller
 {
     private readonly CollegeDbContext _context;
@@ -16,6 +18,7 @@ public class FacultyController : Controller
     }
 
     // LIST
+    [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
         var faculties = await _context.Faculties

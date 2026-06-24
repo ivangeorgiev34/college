@@ -16,10 +16,14 @@
             Manage faculty information.
         </p>
 
-        <a asp-action="Create"
-           class="btn btn-primary">
-            Add Faculty
-        </a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Create"
+               class="btn btn-primary">
+                Add Faculty
+            </a>
+        }
+
 
     </div>
 
@@ -49,17 +53,20 @@
 
                             <td class="text-end">
 
-                                <a asp-action="Edit"
-                                   asp-route-id="@faculty.Id"
-                                   class="btn btn-sm btn-outline-primary">
-                                    Edit
-                                </a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Edit"
+                                       asp-route-id="@faculty.Id"
+                                       class="btn btn-sm btn-outline-primary">
+                                        Edit
+                                    </a>
 
-                                <a asp-action="Delete"
-                                   asp-route-id="@faculty.Id"
-                                   class="btn btn-sm btn-outline-danger">
-                                    Delete
-                                </a>
+                                    <a asp-action="Delete"
+                                       asp-route-id="@faculty.Id"
+                                       class="btn btn-sm btn-outline-danger">
+                                        Delete
+                                    </a>
+                                }
 
                             </td>
 
