@@ -16,11 +16,14 @@
             Manage teacher information and qualifications.
         </p>
 
-        <a asp-area="Identity"
-            asp-page="/Account/Register"
-            class="btn btn-primary">
-            Register Teacher
-        </a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-area="Identity"
+               asp-page="/Account/Register"
+               class="btn btn-primary">
+                Register Teacher
+            </a>
+        }
 
     </div>
 
