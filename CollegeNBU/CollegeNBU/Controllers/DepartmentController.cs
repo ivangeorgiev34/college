@@ -52,10 +52,17 @@ public class DepartmentController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateDepartmentViewModel model)
     {
+        ViewBag.Faculties = await _context.Faculties.ToListAsync();
+        ViewBag.Teachers = await _context.Teachers.ToListAsync();
+
         if (!ModelState.IsValid)
         {
-            ViewBag.Faculties = await _context.Faculties.ToListAsync();
-            ViewBag.Teachers = await _context.Teachers.ToListAsync();
+            return View(model);
+        }
+
+        if (_context.Departments.Any(x => x.HeadTeacherId == model.HeadTeacherId))
+        {
+            ModelState.AddModelError("", "A head teacher can be head at only one department");
             return View(model);
         }
 

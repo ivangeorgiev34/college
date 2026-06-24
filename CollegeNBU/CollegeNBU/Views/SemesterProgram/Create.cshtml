@@ -26,7 +26,41 @@
 
                     </div>
 
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger mb-3">
+                    </div>
+
                     <form asp-action="Create">
+
+                        <div class="mb-4">
+                            <label asp-for="Name"
+                                   class="form-label">
+                                Name
+                            </label>
+
+                            <input asp-for="Name"
+                                   class="form-control" />
+
+                            <span asp-validation-for="Name"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label asp-for="Semester"
+                                   class="form-label">
+                                Semester
+                            </label>
+
+                            <input asp-for="Semester"
+                                   class="form-control" />
+
+                            <span asp-validation-for="Semester"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
 
                         <div class="mb-4">
 

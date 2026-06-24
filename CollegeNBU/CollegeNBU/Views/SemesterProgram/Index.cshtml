@@ -35,6 +35,8 @@
                 <thead>
 
                     <tr>
+                        <th>Name</th>
+                        <th>Semester</th>
                         <th>Department</th>
                         <th>Courses</th>
                     </tr>
@@ -46,6 +48,14 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+
+                            <td>
+                                @item.Name
+                            </td>
+
+                            <td>
+                                @item.Semester
+                            </td>
 
                             <td>
                                 @item.DepartmentName

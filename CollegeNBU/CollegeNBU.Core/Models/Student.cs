@@ -1,4 +1,4 @@
-﻿using CollegeNBU.Core.Models;
+﻿namespace CollegeNBU.Core.Models;
 
 public class Student
 {

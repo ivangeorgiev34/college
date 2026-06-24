@@ -24,6 +24,8 @@ public class SemesterProgramController : Controller
             .Select(sp => new SemesterProgramViewModel
             {
                 Id = sp.Id,
+                Name = sp.Name,
+                Semester = sp.Semester,
                 DepartmentName = sp.Department.Name,
                 Courses = sp.Courses
                     .Select(c => c.Course.Name)
@@ -39,14 +41,26 @@ public class SemesterProgramController : Controller
         ViewBag.Departments = await _context.Departments.ToListAsync();
         ViewBag.Courses = await _context.Courses.ToListAsync();
 
-        return View();
+        CreateSemesterProgramViewModel model = new();
+
+        return View(model);
     }
 
     [HttpPost]
     public async Task<IActionResult> Create(CreateSemesterProgramViewModel model)
     {
+        if (!ModelState.IsValid)
+        {
+            ViewBag.Departments = await _context.Departments.ToListAsync();
+            ViewBag.Courses = await _context.Courses.ToListAsync();
+
+            return View(model);
+        }
+
         var program = new SemesterProgram
         {
+            Name = model.Name,
+            Semester = model.Semester.ToString(),
             DepartmentId = model.DepartmentId
         };
 
